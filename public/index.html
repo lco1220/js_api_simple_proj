@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="text-gray-900 antialiased leading-tight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <script src='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" href="style.css">
+
+  <title>Covid19 Tracker</title>
+</head>
+<body class="min-h-screen bg-blue-800 overflow-x-hidden">
+
+  <header class="container flex flex-col items-center pt-10 justify-between sm:flex-row lg:mx-auto md:justify-around mx-auto">
+    <h1 class="font-sans text-4xl text-gray-100 tracking-widest mb-2 sm:mb-0">Covid-19 Tracker</h1>
+    <div class="card__container flex">
+      <div class="card mx-1 p-1 lg:mx-3 lg:p-2 text-gray-100 tracking-widest text-red-300 text-center">
+        <h3 class="font-sans text-md pb-1 lg:text-xl lg:pb-2 border-b border-red-300">
+          Cases
+        </h3>
+        <div class="text-red-300 pt-1 lg:pt-2 flex justify-center">
+          <p id="infoCases" class="text-sm lg:text-lg"></p>
+          <!-- <small class="text-xs" id="infoTodayCases"></small> -->
+        </div>
+      </div>
+      <div class="card mx-1 p-1 lg:mx-3 lg:p-2 text-gray-100 tracking-widest text-red-500 text-center">
+        <h3 class="font-sans text-md pb-1 lg:text-xl lg:pb-2 border-b border-red-500">
+          Active
+        </h3>
+        <div class="text-red-500 pt-1 lg:pt-2 flex justify-center">
+          <p id="infoActive" class="text-sm lg:text-lg"></p>
+          <!-- <small class="text-xs" id="infoTodayActive"></small> -->
+        </div>
+      </div>
+      <div class="card mx-1 p-1 lg:mx-3 lg:p-2 text-gray-100 tracking-widest text-green-400 text-center">
+        <h3 class="font-sans text-md pb-1 lg:text-xl lg:pb-2 border-b border-green-400">
+          Recovered
+        </h3>
+        <div class="text-green-400 pt-1 lg:pt-2 flex justify-center ">
+          <p class="text-sm lg:text-lg text-center" id="infoRecov"></p>
+        </div>
+      </div>
+      <div class="card mx-1 p-1 lg:mx-3 lg:p-2 text-gray-100 tracking-widest text-gray-400 text-center">
+        <h3 class="font-sans text-md pb-1 lg:text-xl lg:pb-2 border-b border-gray-400">
+          Deaths
+        </h3>
+        <div class="text-gray-400 pt-1 lg:pt-2 flex justify-center">
+          <p class="pr-1 text-sm lg:text-lg" id="infoDeaths"></p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="flex flex-col lg:flex-row container mx-auto py-5 items-center md:items-start" style="height: 480px;">
+
+    <div class="relative mb-5 w-4/5 sm:w-5/6 lg:mx-2 xl:mx-5 lg:mt-2 flex flex-col lg:flex-col md:w-full lg:w-3/5 lg:h-full">
+      <form class="flex flex-col justify-center items-center sm:flex-row sm:w-full md:h-12 lg:h-24 lg:flex-col lg:items-start lg:flex-none flex-auto">
+        <label class="text-gray-200 text-md lg:text-xl font-sans leading-loose tracking-wider text-center lg:text-left sm:w-64">Enter country/state</label>
+        <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg mt-1 py-1 px-2 lg:mt-3 lg:py-2 lg:px-4 block w-full appearance-none leading-normal" type="text" id="search">
+      </form>
+      <div class="hidden absolute transition-all duration-700 ease-in-out bg-white h-auto overflow-y-auto py-1 rounded-lg left-0 mt-1 z-20 sm:w-8/12 sm:right-0 sm:left-auto sm:mr-2 md:w-9/12 lg:w-full lg:left-0" id="match-list">
+      </div>
+      <div id="match-result" class="py-5 px-2 text-gray-100 md:flex-auto hidden">
+      </div>
+      </table>
+    </div>
+
+    <div class="map_container w-full flex-auto h-full relative">
+      <div class="button__container absolute flex z-10 right-0">
+        <button class="button__filter font-black py-1 px-1 transition-colors duration-700 ease-in-out bg-transparent hover:bg-red-400 ">Cases</button>
+        <button class="button__filter font-black text- py-1 px-1 transition-colors duration-700 ease-in-out bg-transparent hover:bg-green-400">Recoveries</button>
+        <button class="button__filter font-black py-1 px-1 transition-colors duration-700 ease-in-out bg-transparent hover:bg-gray-400">Deaths</button>
+      </div>
+      <div id="map" class="w-full h-full z-0"></div>
+    </div>
+
+  </div>
+
+  <footer class="container mx-auto flex flex-col md:flex-row md:justify-around text-white tracking-widest font-sans text-center py-2">
+    <h3 class="my-2 flex flex-row">
+      Olie
+      <a href="https://github.com/lco1220"><img src="https://img.icons8.com/material-rounded/20/000000/github.png"/></a>
+    </h3>
+    <h3 class="my-2">Data from the <a href="https://github.com/NovelCOVID/API">API</a></h3>
+  </footer>
+
+  <script src="main.js"></script>
+  
+</body>
+</html>

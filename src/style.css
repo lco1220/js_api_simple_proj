@@ -1,0 +1,41 @@
+@tailwind base;
+
+.map_container {
+  height: auto;
+}
+
+#match-list {
+  max-height: 200px;
+  top: 4.5rem;
+}
+
+.button__container > button {
+  font-size: 12px;
+}
+
+
+@media (min-width: 640px) {
+
+  #match-list {
+    top: 2.5rem
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  #match-list {
+    top:3rem
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+  #match-list {
+    top: 6rem;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
