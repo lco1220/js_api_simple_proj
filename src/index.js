@@ -2,7 +2,8 @@ const express = require('express');
 const fetch = require('node-fetch');
 
 const app = express();
-app.listen(3000, console.log('Listening'));
+const port = process.env.PORT || 3000;
+app.listen(port, () => {  console.log('Listening') });
 app.use(express.static('public'));
 
 app.get('/countries', async (request, response) => {
