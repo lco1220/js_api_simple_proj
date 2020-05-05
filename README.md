@@ -4,4 +4,8 @@ Getting data from the API
 
 Mapping it
 
-[API](https://github.com/NovelCOVID/API) used.
+[TailwindCSS](https://tailwindcss.com/)
+
+[LeafletJS](https://leafletjs.com/)
+
+[API](https://github.com/NovelCOVID/API)
