@@ -90,12 +90,12 @@ async function showData() {
           mymap.flyTo([data.countryInfo.lat, data.countryInfo.long], 7)
 
           matchResult.innerHTML = 
-          `<h2 class="text-3xl text-center tracking-widest">${data.country}</h2>
+          `<h2 class="text-xl text-center tracking-widest md:text-3xl">${data.country}</h2>
             <ul class="md:flex md:flex-col md:justify-center md:content-center">
-              <li class="my-5 text-xl tracking-wider text-red-300 md:flex-auto md:my-2 md:w-auto">Coronavirus Cases: <span class="text-2xl tracking-wider">${data.cases}</span> <small class="text-sm align-top tracking-wider">${data.todayCases}</small> </li>
-              <li class="my-5 text-xl tracking-wider text-red-400 md:flex-auto md:my-2 md:w-auto">Active Cases: <span class="text-2xl tracking-wider">${data.active}</span></li>
-              <li class="my-5 text-xl tracking-wider text-green-400 md:flex-auto md:my-2 md:w-auto">Recovered Cases: <span class="text-2xl tracking-wider">${data.recovered}</span></li>
-              <li class="my-5 text-xl tracking-wider text-gray-400 md:flex-auto md:my-2 md:w-auto">Deaths: <span class="text-2xl tracking-wider">${data.deaths}</span> <small class="text-sm align-top tracking-wider">${data.todayDeaths}</small> </li>
+              <li class="my-5 text-lg tracking-wider text-red-300 md:text-xl md:flex-auto md:my-2 md:w-auto">Coronavirus Cases: <span class="text-xl md:text-2xl tracking-wider">${data.cases}</span> <small class="text-sm align-top tracking-wider">${data.todayCases}</small> </li>
+              <li class="my-5 text-lg tracking-wider text-red-400 md:flex-auto md:my-2 md:w-auto">Active Cases: <span class="text-xl md:text-2xl tracking-wider">${data.active}</span></li>
+              <li class="my-5 text-lg tracking-wider text-green-400 md:text-xl md:flex-auto md:my-2 md:w-auto">Recovered Cases: <span class="text-xl md:text-2xl tracking-wider">${data.recovered}</span></li>
+              <li class="my-5 text-lg tracking-wider text-gray-400 md:text-xl md:flex-auto md:my-2 md:w-auto">Deaths: <span class="text-xl md:text-2xl tracking-wider">${data.deaths}</span> <small class="text-sm align-top tracking-wider">${data.todayDeaths}</small> </li>
             </ul>`;
 
         } else if(data.province == selectedCountry){
@@ -103,9 +103,9 @@ async function showData() {
           matchResult.innerHTML = 
           `<h2 class="text-3xl text-center tracking-widest">${data.province} <span class="text-sm">${data.country}</span></h2>
           <ul class="md:flex md:flex-col md:justify-center md:content-center">
-            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-xl tracking-wider text-red-300">Coronavirus Cases: <span class="text-2xl tracking-wider ">${data.stats.confirmed}</span></li>
-            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-xl tracking-wider text-green-400">Recovered Cases: <span class="text-2xl tracking-wider">${data.stats.recovered}</span></li>
-            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-xl tracking-wider text-gray-400">Deaths: <span class="text-2xl tracking-wider ">${data.stats.deaths}</span></li>
+            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-lg md:text-xl tracking-wider text-red-300">Coronavirus Cases: <span class="text-xl md:text-2xl tracking-wider ">${data.stats.confirmed}</span></li>
+            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-lg md:text-xl tracking-wider text-green-400">Recovered Cases: <span class="text-xl md:text-2xl tracking-wider">${data.stats.recovered}</span></li>
+            <li class=" md:flex-auto md:my-2 md:w-auto my-5 text-lg md:text-xl tracking-wider text-gray-400">Deaths: <span class="text-xl md:text-2xl tracking-wider ">${data.stats.deaths}</span></li>
           </ul>`;
 
         }

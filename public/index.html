@@ -17,7 +17,7 @@
 
   <title>Covid19 Tracker</title>
 </head>
-<body class="min-h-screen bg-blue-800 overflow-x-hidden">
+<body class="min-h-screen bg-blue-800 overflow-x-hidden h-screen">
 
   <header class="container flex flex-col items-center pt-10 justify-between sm:flex-row lg:mx-auto md:justify-around mx-auto">
     <h1 class="font-sans text-4xl text-gray-100 tracking-widest mb-2 sm:mb-0">Covid-19 Tracker</h1>
@@ -58,14 +58,14 @@
       </div>
     </div>
   </header>
-  <div class="flex flex-col h-screen lg:flex-row container mx-auto py-5 items-center md:items-start" style="">
+  <div class="flex flex-col h-full lg:flex-row container mx-auto py-5 items-center md:items-start" style="">
 
     <div class="relative mb-5 w-4/5 sm:w-5/6 lg:mx-2 xl:mx-5 lg:mt-2 flex flex-col flex-auto lg:flex-col md:w-full lg:w-3/5">
       <form class="flex flex-col justify-center items-center sm:flex-row sm:w-full md:h-12 lg:h-24 lg:flex-col lg:items-start lg:flex-none flex-auto">
         <label class="text-gray-200 text-md lg:text-xl font-sans leading-loose tracking-wider text-center lg:text-left sm:w-64">Enter country/state</label>
         <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg mt-1 py-1 px-2 lg:mt-3 lg:py-2 lg:px-4 block w-full appearance-none leading-normal" type="text" id="search">
       </form>
-      <div class="hidden absolute transition-all duration-700 ease-in-out bg-white h-auto overflow-y-auto py-1 rounded-lg left-0 mt-1 z-20 sm:w-8/12 sm:right-0 sm:left-auto sm:mr-2 md:w-9/12 lg:w-full lg:left-0" id="match-list">
+      <div class="hidden absolute transition-all duration-700 ease-in-out bg-white w-full h-auto overflow-y-auto py-1 rounded-lg left-0 mt-1 z-20 sm:right-0 sm:left-auto md:w-9/12 lg:w-full lg:left-0" id="match-list">
       </div>
       <div id="match-result" class="py-5 px-2 text-gray-100 md:flex-auto hidden">
       </div>
@@ -88,7 +88,7 @@
       Olie
       <a href="https://github.com/lco1220"><img src="https://img.icons8.com/material-rounded/20/000000/github.png"/></a>
     </h3>
-    <h3 class="my-2">Data from the <a href="https://github.com/NovelCOVID/API">API</a></h3>
+    <h3 class="my-2"><a href="https://github.com/NovelCOVID/API">API</a></h3>
   </footer>
 
   <script src="main.js"></script>
